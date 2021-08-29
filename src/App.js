@@ -32,12 +32,25 @@ const App = () => {
 
   const [data, setData] = useState(0);
   const [symbol, setSymbol] = useState(0);
+  const [message, setMessage] = useState('...loading')
 
   const currencyOptions = currencies.map(({ currency, symbol }) => (
     { key: currency, value: currency, label: symbol + ' ' + currency }
   ))
 
   const [currency, Currencies] = useDropdown("", "ILS", currencyOptions);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        let data = await (await fetch('/api')).json()
+        setMessage(data.message)
+      } catch (err) {
+        setMessage(err.message)
+      }
+    }
+    fetchData()
+  })
 
   useEffect(() => {
     let selected = currencies.find(x => x.currency === currency);
@@ -61,7 +74,7 @@ const App = () => {
 
         <div className="App">
           <p> <Currencies /> {symbol} {data}</p>
-
+          <p>{message}</p>
         </div>
       </body>
     </div>
