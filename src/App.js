@@ -73,7 +73,7 @@ const App = () => {
       <body className="App-body">
 
         <div className="App">
-          <p> <span><Currencies style={{'verticalAlign':'middle'}}/></span> <span style={{'verticalAlign':'middle'}}> {symbol} {data}</span></p>
+          <p> <span><Currencies /></span> <span className="data-display"> {symbol} {data}</span></p>
           <p>{message}</p>
         </div>
       </body>
