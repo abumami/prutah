@@ -1,2 +1,0 @@
-# prutah
-Begin app
