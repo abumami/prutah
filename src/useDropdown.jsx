@@ -13,7 +13,6 @@ const useDropdown = (label, defaultState, options) => {
                 onBlur={e => updateState(e.target.value)}
                 disabled={!options.length}
             >
-                <option />
                 {options.map(item => (
                     <option key={item.key} value={item.value}>
                         {item.label}
